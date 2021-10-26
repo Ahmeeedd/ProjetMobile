@@ -9,19 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".Add_Fiche_Medecin_Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".Welcome"></activity>
-        <activity android:name=".addInfo"></activity>
-        <activity android:name=".Register"></activity>
+        <activity android:name=".Welcome" />
+        <activity android:name=".addInfo" />
+        <activity android:name=".Register" />
     </application>
 
 </manifest>
