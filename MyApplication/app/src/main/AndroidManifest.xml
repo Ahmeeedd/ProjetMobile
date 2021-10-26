@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-
+        <activity
+            android:name=".Add_Enfant_Activity"
+            android:exported="true" />
         <activity
             android:name=".Add_Fiche_Medecin_Activity"
             android:exported="true">
@@ -22,6 +24,7 @@
         <activity android:name=".Welcome" />
         <activity android:name=".addInfo" />
         <activity android:name=".Register" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
