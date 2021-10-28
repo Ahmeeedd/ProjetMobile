@@ -1,6 +1,5 @@
 package tn.esprit.project;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,9 +14,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn=(Button) findViewById(R.id.button);
-        Button bt=(Button) findViewById(R.id.button3);
-        EditText et=(EditText) findViewById(R.id.text1);
+        Button btn=(Button) findViewById(R.id.btSignIn);
+        Button bt=(Button) findViewById(R.id.btSignUp);
+        EditText et=(EditText) findViewById(R.id.emailinput);
+        EditText psw=(EditText) findViewById(R.id.passwordinput);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

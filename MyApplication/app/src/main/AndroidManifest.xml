@@ -13,7 +13,7 @@
             android:name=".Add_Enfant_Activity"
             android:exported="true" />
         <activity
-            android:name=".Add_Fiche_Medecin_Activity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
         <activity android:name=".Welcome" />
         <activity android:name=".addInfo" />
         <activity android:name=".Register" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Add_Fiche_Medecin_Activity" />
     </application>
 
 </manifest>
