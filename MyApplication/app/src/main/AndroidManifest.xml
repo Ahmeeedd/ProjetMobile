@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".Add_Fiche_Medecin_Activity"
+            android:exported="true" />
+        <activity
             android:name=".Add_Enfant_Activity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Add_child_vaccine_Activity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +27,7 @@
         <activity android:name=".Welcome" />
         <activity android:name=".addInfo" />
         <activity android:name=".Register" />
-        <activity android:name=".Add_Fiche_Medecin_Activity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

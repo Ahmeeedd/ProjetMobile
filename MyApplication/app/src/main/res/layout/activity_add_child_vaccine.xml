@@ -24,68 +24,36 @@
             android:layout_marginEnd="40dp">
 
             <EditText
-                android:id="@+id/editTextTextPersonNameLastName"
+                android:id="@+id/editTextDescriptionVaccine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="108dp"
                 android:layout_marginEnd="50dp"
                 android:ems="10"
-                android:hint="Name / Last Name"
-                android:inputType="textPersonName"
+                android:hint="Desciption"
+                android:inputType="text"
                 android:minHeight="48dp"
-                android:textColorHint="#F3F1F1" />
+                android:textColorHint="#FFFAFA" />
 
             <EditText
-                android:id="@+id/editTextTextAdresse"
+                android:id="@+id/editTextTextPersonName4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextTextPersonNameLastName"
+                android:layout_below="@+id/editTextDescriptionVaccine"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="50dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="42dp"
                 android:layout_marginEnd="50dp"
                 android:ems="10"
-                android:hint="Adresse"
-                android:inputType="textPersonName"
+                android:hint="Month number"
+                android:inputType="number"
                 android:minHeight="48dp"
-                android:textColorHint="#F3F1F1" />
-
-            <EditText
-                android:id="@+id/editTextPhone2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextTextAdresse"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="50dp"
-                android:ems="10"
-                android:hint="Phone"
-                android:inputType="phone"
-                android:minHeight="48dp"
-                android:textColorHint="#F6F1F1" />
-
-            <EditText
-                android:id="@+id/editTextTextEmailAddress"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextPhone2"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="50dp"
-                android:ems="10"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:minHeight="48dp"
-                android:textColorHint="#FAF4F4" />
+                android:textColorHint="#F4EDED" />
         </RelativeLayout>
 
         <ImageView
