@@ -10,15 +10,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
 
-        <activity
-            android:name=".Add_Vaccine_Activity"
-            android:exported="true">
+        
+
+          <activity
+            android:name=".LoginActivity"
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+
+            android:name=".Add_Vaccine_Activity"
+
+            android:name=".ConfirmPasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ForgetPasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Add_Fiche_Medecin_Activity"
+            android:exported="true" />
+        <activity
+            android:name=".Add_Enfant_Activity"
+            android:exported="true" />
+      
         <activity
             android:name=".Affiche_List_Vaccine_Activity"
             android:exported="true" />
@@ -37,11 +56,17 @@
         <activity
             android:name=".Update_Vaccine_Activity"
             android:exported="true" />
+
         <!--
         <activity android:name=".Welcome" />
+
         <activity android:name=".addInfo"
         />
         -->
+
+        <activity android:name=".addInfo" />
+        <activity android:name=".Register" />
+        <activity android:name=".Add_child_vaccine_Activity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Register" />
     </application>

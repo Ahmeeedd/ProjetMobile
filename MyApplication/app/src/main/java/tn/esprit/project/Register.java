@@ -84,7 +84,7 @@ public class Register extends AppCompatActivity {
 
                             Toast.makeText(getApplicationContext(),"User successfully registered !",Toast.LENGTH_SHORT).show();
 
-                            startActivity(new Intent(Register.this, MainActivity.class));
+                            startActivity(new Intent(Register.this, LoginActivity.class));
                         });
                     }).start();
 
@@ -97,7 +97,7 @@ public class Register extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myintent=new Intent(Register.this,MainActivity.class);
+                Intent myintent=new Intent(Register.this,LoginActivity.class);
                 startActivity(myintent);
             }
         });
