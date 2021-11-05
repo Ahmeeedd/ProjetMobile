@@ -10,27 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
 
-        
-
-          <activity
-            android:name=".LoginActivity"
-              android:exported="true">
-
+        <activity
+            android:name=".Add_child_vaccine_Activity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
 
         <activity
-
-            android:name=".Add_Vaccine_Activity"
+            android:name=".Affecter_Vaccine_Enfant_Activity"
             android:exported="true" />
 
-            android:name=".ConfirmPasswordActivity"
+        <activity
+            android:name=".Add_Vaccine_Activity"
             android:exported="true" />
         <activity
             android:name=".ForgetPasswordActivity"
@@ -41,14 +36,11 @@
         <activity
             android:name=".Add_Enfant_Activity"
             android:exported="true" />
-      
         <activity
             android:name=".Affiche_List_Vaccine_Activity"
             android:exported="true" />
-
-
         <activity
-            android:name=".Add_child_vaccine_Activity"
+            android:name=".LoginActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity2"
@@ -56,19 +48,14 @@
         <activity
             android:name=".Update_Vaccine_Activity"
             android:exported="true" />
-
         <!--
         <activity android:name=".Welcome" />
 
         <activity android:name=".addInfo"
         />
         -->
-
-
         <activity android:name=".Register" />
-
         <activity android:name=".MainActivity" />
-
     </application>
 
 </manifest>

@@ -10,17 +10,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import tn.esprit.project.database.MyDataBase;
+import tn.esprit.project.models.Enfant;
+import tn.esprit.project.models.EnfantVaccine;
 import tn.esprit.project.models.Vaccine;
 
-public class Affiche_List_Vaccine_Activity extends AppCompatActivity {
+public class Affecter_Vaccine_Enfant_Activity extends AppCompatActivity {
 
 
-    //var
     private MyDataBase database;
     private List<Vaccine> vaccineList;
     private AdapterVaccine vAdapter;
@@ -28,9 +29,10 @@ public class Affiche_List_Vaccine_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_affiche_list_vaccine);
+        setContentView(R.layout.activity_affecter_vaccine_enfant);
 
-        //
+
+
         database = MyDataBase.getDataBase(this);
         vaccineList=database.vaccineDAO().getAllListVaccine();
 
@@ -55,56 +57,61 @@ public class Affiche_List_Vaccine_Activity extends AppCompatActivity {
 
             @Override
             public void onLongClick(View view, int position) {
+
                 showActionsDialog(position);
+
+
             }
         }));
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.floatingActionButtonAdd);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                startActivity(new Intent(Affiche_List_Vaccine_Activity.this, Add_Vaccine_Activity.class));
-
-            }
-        });
 
 
     }
+
+
     private void showActionsDialog(final int position) {
-        CharSequence colors[] = new CharSequence[]{"Edit", "Delete"};
+        CharSequence colors[] = new CharSequence[]{"Add","Cancel"};
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Choose option");
+        builder.setTitle("Do you wont add  this vaccin ?");
         builder.setItems(colors, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
+
                 if (which == 0) {
-                    showEdit(position);
+
+
+
+                    AffectToChild(position);
+
+                    startActivity(new Intent(Affecter_Vaccine_Enfant_Activity.this, Add_child_vaccine_Activity.class));
                 } else {
-                    delete(position);
+                    builder.setCancelable(true);
                 }
+
+
             }
         });
         builder.show();
     }
 
-    public void delete(int position){
+    public void AffectToChild(int pos){
 
-        database.vaccineDAO().delete(this.vaccineList.get(position));
+        Vaccine vaccine = vaccineList.get(pos);
 
-        vaccineList.remove(position);
-        vAdapter.notifyItemRemoved(position);
-    }
 
-    public void showEdit(int position){
 
-        Intent i = new Intent(Affiche_List_Vaccine_Activity.this, Update_Vaccine_Activity.class);
 
-        i.putExtra("vaccinid",String.valueOf(this.vaccineList.get(position).getVaccineId()));
+        EnfantVaccine enfantVaccine = new EnfantVaccine(vaccine.getVaccineId(),1,new Date());
 
-        startActivity(i);
+        database.enfantVaccineDAO().add(enfantVaccine);
+
+
+
 
     }
+
 }

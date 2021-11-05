@@ -13,17 +13,18 @@
         android:layout_height="match_parent"
         android:alpha="0.8"
         android:background="@drawable/gradient_bg"
-        tools:layout_editor_absoluteX="-32dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteX="-33dp"
+        tools:layout_editor_absoluteY="32dp" />
 
     <TextView
         android:id="@+id/textViewNomPrenom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="First Name / Last Name : "
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.234"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view2" />
 
@@ -31,23 +32,37 @@
         android:id="@+id/textViewHistorique"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="288dp"
-        android:text="Historique"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="180dp"
+        android:scrollbarSize="14sp"
+        android:text="Vaccin History"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewNomPrenom" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listVaccinChild"
-        android:layout_width="279dp"
-        android:layout_height="337dp"
-        android:layout_marginTop="48dp"
+        android:id="@+id/listVaccinToChild"
+        android:layout_width="397dp"
+        android:layout_height="489dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewHistorique"
         tools:ignore="MissingConstraints">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonAddVaccinE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/listVaccinToChild"
+        app:layout_constraintEnd_toEndOf="@+id/listVaccinToChild"
+        app:layout_constraintHorizontal_bias="0.91"
+        app:layout_constraintStart_toStartOf="@+id/listVaccinToChild"
+        app:layout_constraintTop_toTopOf="@+id/listVaccinToChild"
+        app:layout_constraintVertical_bias="0.903"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
