@@ -3,6 +3,7 @@ package tn.esprit.project.models;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 import java.util.Date;
 
@@ -19,6 +20,7 @@ public class Enfant {
     @ColumnInfo
     private int age;
     @ColumnInfo
+    @TypeConverters(Converter.class)
     private Date date_naiss;
 
 

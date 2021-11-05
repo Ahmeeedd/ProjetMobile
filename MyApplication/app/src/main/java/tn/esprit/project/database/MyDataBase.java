@@ -3,15 +3,24 @@ package tn.esprit.project.database;
 
 import android.content.Context;
 
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import tn.esprit.project.DAO.IEnfantDAO;
+import tn.esprit.project.DAO.IEnfantVaccineDAO;
+import tn.esprit.project.DAO.IVaccineDAO;
 import tn.esprit.project.DAO.UserDAO;
+import tn.esprit.project.models.Enfant;
+import tn.esprit.project.models.EnfantVaccine;
 import tn.esprit.project.models.User;
+import tn.esprit.project.models.Vaccine;
 
 
-@Database(entities = {User.class},version=1 )
+@Database(entities = {User.class, Vaccine.class, EnfantVaccine.class, Enfant.class},version=3 /*,
+        autoMigrations = {
+                @AutoMigration(from = 2,to = 3)}*/)
 
 public abstract class MyDataBase extends RoomDatabase {
 
@@ -21,6 +30,14 @@ public abstract class MyDataBase extends RoomDatabase {
 
     public abstract UserDAO userdao();
 
+    public abstract IVaccineDAO vaccineDAO();
+
+    public abstract IEnfantDAO enfantDAO();
+
+    public abstract IEnfantVaccineDAO enfantVaccineDAO();
+
+
+
     public static  MyDataBase getDataBase(Context context)
 
     {
@@ -28,6 +45,7 @@ public abstract class MyDataBase extends RoomDatabase {
         {
             instance = Room.databaseBuilder(context.getApplicationContext(),MyDataBase.class,dbName)
                     .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
                     .build();
         }
         return instance;
