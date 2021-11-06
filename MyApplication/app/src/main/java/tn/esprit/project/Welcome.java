@@ -48,6 +48,8 @@ public class Welcome extends AppCompatActivity {
                 Toast.makeText(this, "logout successfully", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.profile:
+                Intent myintent2=new Intent(Welcome.this,ProfileActivity.class);
+                startActivity(myintent2);
                 Toast.makeText(this, "profile", Toast.LENGTH_SHORT).show();
                 return true;
 
