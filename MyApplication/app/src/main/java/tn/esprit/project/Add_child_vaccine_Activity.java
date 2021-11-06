@@ -74,7 +74,7 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
 
             Enfant enfant = new Enfant(30, 30, "ali", 30, dateD);
 
-           // database.enfantDAO().add(enfant);
+            database.enfantDAO().add(enfant);
 
            // System.out.println("-->size"+database.enfantDAO().getAll().size());
 
@@ -84,7 +84,7 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
 
 
         //------->
-        for (EnfantVaccine enfantVaccine : database.enfantVaccineDAO().getByEnfant(2)
+        for (EnfantVaccine enfantVaccine : database.enfantVaccineDAO().getByEnfant(1)
         ) {
 
 
