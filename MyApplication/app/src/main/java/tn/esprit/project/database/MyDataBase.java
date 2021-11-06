@@ -22,6 +22,8 @@ import tn.esprit.project.models.Vaccine;
         autoMigrations = {
                 @AutoMigration(from = 2,to = 3)}*/)
 
+//@Database(entities = {User.class},version=3 )
+
 public abstract class MyDataBase extends RoomDatabase {
 
     private static final String dbName = "db_My_Baby";

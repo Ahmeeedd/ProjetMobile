@@ -29,6 +29,17 @@ public interface UserDAO {
     @Delete
     void deleteUser(User u);
 
+    @Query("SELECT profileimage from User where firstname=(:firstname)")
+    public byte[] selectProfileImage(String firstname);
+
+
+    @Query("Update User set email=(:emailtomodify),firstname=(:firstnameTomodify),lastname=(:lastnameTomodify),password=(:passwordTomodify),phonenumber=(:phonenumberTomodify) where userId=(:id)")
+    public void updateUserProfile(String emailtomodify,String firstnameTomodify,String lastnameTomodify,String passwordTomodify,String phonenumberTomodify,long id);
+
+    @Query("Update User set profileimage=(:imageprofile) where firstname=(:f)")
+    public void updateUserImage(byte[] imageprofile,String f);
+
+
     @Query("SELECT * from User where email=(:email)")
     User checkIfUserExists(String email);
 

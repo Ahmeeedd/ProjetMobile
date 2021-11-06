@@ -21,12 +21,23 @@ import androidx.room.TypeConverters;
         private String password;
         @ColumnInfo
         private String phonenumber;
-        @ColumnInfo
-        private String Image;
+
+        @ColumnInfo(name="profileimage",typeAffinity = ColumnInfo.BLOB)
+        private byte[] Image;
         @ColumnInfo
         private Role role;
 
-        public User(long userId, String firstname, String lastname, String email, String password, String phonenumber, String image, Role role) {
+        public User(String firstname, String lastname, String email, String password, String phonenumber, byte[] image, Role role) {
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.email = email;
+            this.password = password;
+            this.phonenumber = phonenumber;
+            Image = image;
+            this.role = role;
+        }
+
+        public User(long userId, String firstname, String lastname, String email, String password, String phonenumber, byte[] image, Role role) {
             this.userId = userId;
             this.firstname = firstname;
             this.lastname = lastname;
@@ -35,30 +46,6 @@ import androidx.room.TypeConverters;
             this.phonenumber = phonenumber;
             Image = image;
             this.role = role;
-        }
-
-        public User(String firstname, String lastname, String email, String password, String phonenumber, String image, Role role) {
-            this.firstname = firstname;
-            this.lastname = lastname;
-            this.email = email;
-            this.password = password;
-            this.phonenumber = phonenumber;
-            Image = image;
-            this.role = role;
-        }
-
-        @Override
-        public String toString() {
-            return "User{" +
-                    "userId=" + userId +
-                    ", firstname='" + firstname + '\'' +
-                    ", lastname='" + lastname + '\'' +
-                    ", email='" + email + '\'' +
-                    ", password='" + password + '\'' +
-                    ", phonenumber='" + phonenumber + '\'' +
-                    ", Image='" + Image + '\'' +
-                    ", role=" + role +
-                    '}';
         }
 
         public User() {
@@ -120,11 +107,11 @@ import androidx.room.TypeConverters;
             this.phonenumber = phonenumber;
         }
 
-        public String getImage() {
+        public byte[] getImage() {
             return Image;
         }
 
-        public void setImage(String image) {
+        public void setImage(byte[] image) {
             Image = image;
         }
     }

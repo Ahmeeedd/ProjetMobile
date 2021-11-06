@@ -55,9 +55,12 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             //       if (user.getRole().toString().equals(Role.Parent)) {
                             startActivity(new Intent(LoginActivity.this, Welcome.class));
-                            //      } else {
+                            User usertoModified = db.userdao().checkUser(email);
+                            System.out.println("email user"+ usertoModified.getEmail());
+                            ProfileActivity.userprofile = usertoModified;
+                              //    } else {
                             //Driver Home Page à developper
-                            //     }
+                             //    }
 
 
                         }
