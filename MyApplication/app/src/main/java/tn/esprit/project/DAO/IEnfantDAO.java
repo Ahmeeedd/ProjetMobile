@@ -22,5 +22,11 @@ public interface IEnfantDAO {
     @Query("SELECT * FROM enfant")
     public List<EnfantWithVaccin> getEnfantWithVaccinList();
 
+    @Query("select * from enfant where enfantId=:id")
+    public Enfant getById(long id);
+
+    @Query("select * from enfant")
+    public List<Enfant> getAll();
+
 
 }

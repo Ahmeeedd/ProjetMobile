@@ -9,6 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import tn.esprit.project.models.EnfantVaccine;
@@ -32,7 +35,7 @@ public class AdapterVaccinEnfant  extends RecyclerView.Adapter<
     public void onBindViewHolder(@NonNull AdapterVaccinEnfant.ViewHolder holder, int position) {
         ModelViewEnfantVaccine singleVaccine = vaccineList.get(position);
         holder.txtDescription.setText(singleVaccine.getDescription());
-        holder.textViewDateC.setText(String.valueOf(singleVaccine.getDateCreation().toString()));
+        holder.textViewDateC.setText(formatDate(singleVaccine.getDateCreation()));
     }
 
     @Override
@@ -54,6 +57,21 @@ public class AdapterVaccinEnfant  extends RecyclerView.Adapter<
     AdapterVaccinEnfant(Context mContext, List<ModelViewEnfantVaccine> vaccineList) {
         this.mContext = mContext;
         this.vaccineList = vaccineList;
+    }
+
+
+    private String formatDate(Date datep) {
+        try {
+            SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            return fmt.format(datep);
+        } catch (Exception e) {
+
+            return "--:--";
+
+        }
+
+
     }
 
 

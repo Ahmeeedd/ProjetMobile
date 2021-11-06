@@ -103,7 +103,7 @@ public class Affecter_Vaccine_Enfant_Activity extends AppCompatActivity {
         Vaccine vaccine = vaccineList.get(pos);
 
 
-
+//----->
 
         EnfantVaccine enfantVaccine = new EnfantVaccine(vaccine.getVaccineId(),1,new Date());
 

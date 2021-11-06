@@ -13,8 +13,8 @@
         android:layout_height="match_parent"
         android:alpha="0.8"
         android:background="@drawable/gradient_bg"
-        tools:layout_editor_absoluteX="-33dp"
-        tools:layout_editor_absoluteY="32dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <TextView
         android:id="@+id/textViewNomPrenom"
@@ -30,22 +30,24 @@
 
     <TextView
         android:id="@+id/textViewHistorique"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
-        android:layout_marginEnd="180dp"
+        android:layout_width="194dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="168dp"
         android:scrollbarSize="14sp"
         android:text="Vaccin History"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomPrenom" />
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewD" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listVaccinToChild"
-        android:layout_width="397dp"
-        android:layout_height="489dp"
+        android:layout_width="378dp"
+        android:layout_height="304dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewHistorique"
         tools:ignore="MissingConstraints">
@@ -64,5 +66,38 @@
         app:layout_constraintTop_toTopOf="@+id/listVaccinToChild"
         app:layout_constraintVertical_bias="0.903"
         app:srcCompat="@android:drawable/ic_input_add" />
+
+    <TextView
+        android:id="@+id/textViewD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
+        android:text="Vaccin to do :"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomPrenom" />
+
+    <TextView
+        android:id="@+id/textViewAge"
+        android:layout_width="179dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:text="Age:"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewHistorique"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDateNaissance" />
+
+    <TextView
+        android:id="@+id/textViewDateNaissance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="Date of birth"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewD" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
