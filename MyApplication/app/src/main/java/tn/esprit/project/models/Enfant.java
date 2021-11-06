@@ -22,10 +22,17 @@ public class Enfant {
     @ColumnInfo
     @TypeConverters(Converter.class)
     private Date date_naiss;
+    @ColumnInfo
+    private int parentId;
 
 
+    public int getParentId() {
+        return parentId;
+    }
 
-
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
+    }
 
     public Enfant(long enfantId, double poids, int taille, String prenom, int age, Date date_naiss) {
         this.enfantId = enfantId;
@@ -43,7 +50,14 @@ public class Enfant {
         this.age = age;
         this.date_naiss = date_naiss;
     }
-
+    public Enfant(double poids, int taille, String prenom, int age, Date date_naiss,int parentId) {
+        this.poids = poids;
+        this.taille = taille;
+        this.prenom = prenom;
+        this.age = age;
+        this.parentId=parentId;
+        this.date_naiss = date_naiss;
+    }
     public Enfant() {
     }
 

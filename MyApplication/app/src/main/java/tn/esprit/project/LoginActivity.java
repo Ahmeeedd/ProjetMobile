@@ -60,8 +60,10 @@ public class LoginActivity extends AppCompatActivity {
                                  } else {
                                 Intent homeparent = new Intent(getApplicationContext(), Welcome.class);
                                 User usertoModified = db.userdao().checkUser(email);
-                                System.out.println("email user"+ usertoModified.getEmail());
+
                                 ProfileActivity.userprofile = usertoModified;
+                                Add_Enfant_Activity.userconnected = usertoModified;
+
                                 startActivity(homeparent);
                               }
 

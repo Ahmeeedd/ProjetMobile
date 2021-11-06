@@ -28,5 +28,6 @@ public interface IEnfantDAO {
     @Query("select * from enfant")
     public List<Enfant> getAll();
 
-
+    @Query("select * from enfant where parentId=(:userid)")
+    public List<Enfant> getAllEnfantbyUser(int userid);
 }
