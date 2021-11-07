@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 ProfileActivity.userprofile = usertoModified;
                                 Add_Enfant_Activity.userconnected = usertoModified;
+                                ManageEnfantsActivity.userconnected = usertoModified;
 
                                 startActivity(homeparent);
                               }
