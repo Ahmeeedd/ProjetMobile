@@ -74,7 +74,7 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
 
             Enfant enfant = new Enfant(30, 30, "ali", 30, dateD);
 
-            database.enfantDAO().add(enfant);
+          //   database.enfantDAO().add(enfant);
 
            // System.out.println("-->size"+database.enfantDAO().getAll().size());
 
@@ -117,7 +117,7 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
 
         if(enfant!=null){
 
-            textViewAge.setText("Age:" + String.valueOf(calculAge(enfant.getDate_naiss())));
+            textViewAge.setText("Age:" + String.valueOf(calculAge(enfant.getDate_naiss()))+" Month");
 
             dateNai.setText("date of birth:"+formatDate(enfant.getDate_naiss()));
 
