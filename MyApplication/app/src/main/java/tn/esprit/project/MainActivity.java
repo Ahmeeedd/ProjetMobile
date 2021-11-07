@@ -36,6 +36,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        TextView addV = (TextView) findViewById(R.id.addVaccin);
+        addV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(MainActivity.this, Affiche_List_Vaccine_Activity.class));
+            }
+        });
+
+        TextView addVaccin = (TextView) findViewById(R.id.addInterVaccin);
+        addVaccin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(MainActivity.this, Add_Vaccine_Activity.class));
+            }
+        });
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
