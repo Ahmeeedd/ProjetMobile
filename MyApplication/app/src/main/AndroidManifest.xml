@@ -13,7 +13,8 @@
         android:preserveLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication">
+        android:theme="@style/Theme.MyApplication"
+        android:hardwareAccelerated="false">
         <activity
             android:name=".ManageEnfantsActivity"
             android:exported="true" />
