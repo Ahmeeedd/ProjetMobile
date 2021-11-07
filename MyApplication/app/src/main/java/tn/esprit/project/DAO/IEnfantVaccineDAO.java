@@ -22,4 +22,8 @@ public interface IEnfantVaccineDAO {
 
     @Query("delete from EnfantVaccine where enfantId=:idE and vaccineId=:idV ")
     public  void delete(long idE,int idV);
+
+    @Query("select * from EnfantVaccine where vaccineId=:idV")
+    public List<EnfantVaccine> getByIdVaccin(long idV);
+
 }

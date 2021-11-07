@@ -9,6 +9,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -145,6 +148,24 @@ public class Affecter_Vaccine_Enfant_Activity extends AppCompatActivity {
             database.vaccineDAO().add(new Vaccine(3,"vaccin3-3M"));
             database.vaccineDAO().add(new Vaccine(3,"vaccin4-3M"));
 
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu_logout, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+                Intent myintent=new Intent(Affecter_Vaccine_Enfant_Activity.this,LoginActivity.class);
+                startActivity(myintent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 

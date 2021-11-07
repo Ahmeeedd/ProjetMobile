@@ -1,38 +1,34 @@
 package tn.esprit.project;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import tn.esprit.project.DAO.IEnfantDAO;
 import tn.esprit.project.database.MyDataBase;
 import tn.esprit.project.models.Enfant;
 import tn.esprit.project.models.EnfantVaccine;
 import tn.esprit.project.models.ModelViewEnfantVaccine;
-import tn.esprit.project.models.User;
 import tn.esprit.project.models.Vaccine;
 
 public class Add_child_vaccine_Activity extends AppCompatActivity {
@@ -309,6 +305,29 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
 
         return false;
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu_logout, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+                Intent myintent=new Intent(Add_child_vaccine_Activity.this,LoginActivity.class);
+                startActivity(myintent);
+                Toast.makeText(this, "logout successfully", Toast.LENGTH_SHORT).show();
+                return true;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 
 }
 

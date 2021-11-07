@@ -8,7 +8,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -92,10 +96,16 @@ public class Affiche_List_Vaccine_Activity extends AppCompatActivity {
 
     public void delete(int position){
 
-        database.vaccineDAO().delete(this.vaccineList.get(position));
+        if(database.enfantVaccineDAO().getByIdVaccin(this.vaccineList.get(position).getVaccineId()).size()!=0){
 
-        vaccineList.remove(position);
-        vAdapter.notifyItemRemoved(position);
+            Toast.makeText(getApplicationContext(), "This vaccin used !", Toast.LENGTH_SHORT).show();
+        }else {
+
+            database.vaccineDAO().delete(this.vaccineList.get(position));
+
+            vaccineList.remove(position);
+            vAdapter.notifyItemRemoved(position);
+        }
     }
 
     public void showEdit(int position){
@@ -106,5 +116,23 @@ public class Affiche_List_Vaccine_Activity extends AppCompatActivity {
 
         startActivity(i);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu_logout, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+                Intent myintent=new Intent(Affiche_List_Vaccine_Activity.this,LoginActivity.class);
+                startActivity(myintent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
