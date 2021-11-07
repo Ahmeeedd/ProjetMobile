@@ -70,8 +70,7 @@ public class ProfileActivity extends AppCompatActivity {
         phonenumber.setText(userprofile.getPhonenumber());
         name.setText(userprofile.getFirstname()+" "+userprofile.getLastname());
 
-       // displayProfileImage();
-
+        displayProfileImage();
 
         profileiv.setOnClickListener(new View.OnClickListener() {
             @Override

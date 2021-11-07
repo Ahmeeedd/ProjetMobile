@@ -18,7 +18,7 @@ import tn.esprit.project.models.User;
 import tn.esprit.project.models.Vaccine;
 
 
-@Database(entities = {User.class, Vaccine.class, EnfantVaccine.class, Enfant.class},version=4/*,
+@Database(entities = {User.class, Vaccine.class, EnfantVaccine.class, Enfant.class},version=5/*,
         autoMigrations = {
                 @AutoMigration(from = 2,to = 3)}*/)
 

@@ -2,13 +2,19 @@ package tn.esprit.project;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.ByteArrayOutputStream;
 
 import tn.esprit.project.DAO.UserDAO;
 import tn.esprit.project.database.MyDataBase;
@@ -18,6 +24,8 @@ import tn.esprit.project.models.User;
 public class Register extends AppCompatActivity {
     private ProgressDialog progressDialog;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    RadioButton rdparent;
+    RadioButton rdadmin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +39,8 @@ public class Register extends AppCompatActivity {
         EditText name=(EditText) findViewById(R.id.nameinput);
         EditText lastname=(EditText) findViewById(R.id.lastnameinput);
         EditText confpwd=(EditText) findViewById(R.id.confpasswordinput);
-
+        rdparent = findViewById(R.id.rb_parent);
+        rdadmin = findViewById(R.id.rb_admin);
 
         btnR.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,18 +74,22 @@ public class Register extends AppCompatActivity {
 
                     User  u = new User();
                     MyDataBase db = MyDataBase.getDataBase(getApplicationContext());
+                    Drawable d = getDrawable(R.drawable.avatar);
+
                     UserDAO userdao = db.userdao();
                     u.setFirstname(txtfirst);
                     u.setEmail(txtemail);
                     u.setPassword(txtpassword);
                     u.setLastname(txtlast);
-                  /*  if (rdparent.isChecked())
+                    u.setImage(setImageAvatarAsDefault(d));
+                    if (rdparent.isChecked())
                     {
                         u.setRole(Role.Parent);
                     }
                     else if (rdadmin.isChecked()) {
                         u.setRole(Role.Admin);
-                    }*/
+                    }
+
                     new Thread(() -> {
                         userdao.registerUser(u);
 
@@ -101,5 +114,14 @@ public class Register extends AppCompatActivity {
                 startActivity(myintent);
             }
         });
+    }
+    public byte[] setImageAvatarAsDefault(Drawable d)
+    {
+        Bitmap bitmap = ((BitmapDrawable)d).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] bitmapdata = stream.toByteArray();
+
+        return bitmapdata;
     }
 }

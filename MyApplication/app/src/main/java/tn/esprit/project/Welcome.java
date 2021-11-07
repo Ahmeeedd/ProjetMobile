@@ -21,15 +21,22 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_activity);
-        Intent myintent=new Intent(this,addInfo.class);
-        TextView tv=(TextView) findViewById(R.id.name);
+        Intent myintent=new Intent(this,Add_Enfant_Activity.class);
+        Intent myintent2=new Intent(this,ManageEnfantsActivity.class);
         Bundle bdl =getIntent().getExtras();
+        FloatingActionButton faList=(FloatingActionButton) findViewById(R.id.floatingActionlist);
         //  tv.setText(bdl.getString("var1"));
         FloatingActionButton fab=(FloatingActionButton) findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(myintent);
+            }
+        });
+        faList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(myintent2);
             }
         });
     }

@@ -4,14 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mom"
+
+
     tools:context=".ProfileActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:alpha="0.8"
+        android:background="@drawable/gradient_bg"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -264,7 +270,7 @@
 
             android:background="@drawable/button_red"
             android:drawableStart="@drawable/ic_baseline_edit_24"
-            android:drawableTint="@color/colorPrimary"
+            android:drawableTint="@color/colorWhite"
             android:gravity="center"
             android:paddingLeft="15dp"
             android:text="Edit Profile"

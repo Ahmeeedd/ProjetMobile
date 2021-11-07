@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import tn.esprit.project.DAO.UserDAO;
 import tn.esprit.project.database.MyDataBase;
+import tn.esprit.project.models.Role;
 import tn.esprit.project.models.User;
 
 public class LoginActivity extends AppCompatActivity {
@@ -53,14 +54,19 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                             );
                         } else {
-                            //       if (user.getRole().toString().equals(Role.Parent)) {
-                            startActivity(new Intent(LoginActivity.this, Welcome.class));
-                            User usertoModified = db.userdao().checkUser(email);
-                            System.out.println("email user"+ usertoModified.getEmail());
-                            ProfileActivity.userprofile = usertoModified;
-                              //    } else {
-                            //Driver Home Page à developper
-                             //    }
+                            if (user.getRole().equals(Role.Admin)) {
+
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                 } else {
+                                Intent homeparent = new Intent(getApplicationContext(), Welcome.class);
+                                User usertoModified = db.userdao().checkUser(email);
+
+                                ProfileActivity.userprofile = usertoModified;
+                                Add_Enfant_Activity.userconnected = usertoModified;
+                                ManageEnfantsActivity.userconnected = usertoModified;
+
+                                startActivity(homeparent);
+                              }
 
 
                         }
