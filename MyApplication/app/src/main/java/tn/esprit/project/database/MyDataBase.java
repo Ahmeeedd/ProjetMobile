@@ -10,15 +10,17 @@ import androidx.room.RoomDatabase;
 
 import tn.esprit.project.DAO.IEnfantDAO;
 import tn.esprit.project.DAO.IEnfantVaccineDAO;
+import tn.esprit.project.DAO.IFicheMedcinDAO;
 import tn.esprit.project.DAO.IVaccineDAO;
 import tn.esprit.project.DAO.UserDAO;
 import tn.esprit.project.models.Enfant;
 import tn.esprit.project.models.EnfantVaccine;
+import tn.esprit.project.models.FicheMedecin;
 import tn.esprit.project.models.User;
 import tn.esprit.project.models.Vaccine;
 
 
-@Database(entities = {User.class, Vaccine.class, EnfantVaccine.class, Enfant.class},version=5/*,
+@Database(entities = {User.class, Vaccine.class, EnfantVaccine.class, Enfant.class, FicheMedecin.class},version=6/*,
         autoMigrations = {
                 @AutoMigration(from = 2,to = 3)}*/)
 
@@ -35,6 +37,8 @@ public abstract class MyDataBase extends RoomDatabase {
     public abstract IVaccineDAO vaccineDAO();
 
     public abstract IEnfantDAO enfantDAO();
+
+    public abstract IFicheMedcinDAO ficheMedcinDAO();
 
     public abstract IEnfantVaccineDAO enfantVaccineDAO();
 

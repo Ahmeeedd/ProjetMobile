@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/mom"
-    tools:context=".Register">
+    tools:context=".Add_Fiche_Medecin_Activity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             android:layout_marginEnd="40dp">
 
             <EditText
-                android:id="@+id/editTextTextPersonNameLastName"
+                android:id="@+id/Enom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -40,10 +40,10 @@
                 android:textColorHint="#F3F1F1" />
 
             <EditText
-                android:id="@+id/editTextTextAdresse"
+                android:id="@+id/Eadresse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextTextPersonNameLastName"
+                android:layout_below="@+id/Enom"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="50dp"
@@ -56,10 +56,10 @@
                 android:textColorHint="#F3F1F1" />
 
             <EditText
-                android:id="@+id/editTextPhone2"
+                android:id="@+id/Etel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextTextAdresse"
+                android:layout_below="@+id/Eadresse"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="50dp"
@@ -72,10 +72,10 @@
                 android:textColorHint="#F6F1F1" />
 
             <EditText
-                android:id="@+id/editTextTextEmailAddress"
+                android:id="@+id/Eemail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/editTextPhone2"
+                android:layout_below="@+id/Etel"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="50dp"
@@ -96,7 +96,7 @@
             android:src="@drawable/logoapp" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btAdd"
+            android:id="@+id/aded"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/btCancel"

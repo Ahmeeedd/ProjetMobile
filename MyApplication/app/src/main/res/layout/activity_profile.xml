@@ -38,7 +38,7 @@
                 android:layout_height="37dp"
                 android:layout_marginTop="8dp"
 
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -63,7 +63,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_person"
-                app:tint="@color/colorPrimary"
+                app:tint="@color/white"
                 android:contentDescription="TODO" />
 
             <TextView
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:text="FirstName"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:layout_marginStart="10dp"/>
 
@@ -98,7 +98,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_person"
-                app:tint="@color/colorPrimary"
+                app:tint="@color/white"
                 android:contentDescription="TODO" />
 
             <TextView
@@ -107,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:text="Last Name"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:layout_marginStart="10dp"/>
 
@@ -141,7 +141,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_baseline_email_24"
-                app:tint="@color/colorPrimary"
+                app:tint="@color/white"
                 android:contentDescription="TODO" />
 
             <TextView
@@ -149,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:text="email"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:layout_marginStart="10dp"/>
 
@@ -182,7 +182,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_baseline_lock_24"
-                app:tint="@color/colorPrimary"
+                app:tint="@color/white"
                 android:contentDescription="TODO" />
 
             <TextView
@@ -190,7 +190,7 @@
                 android:layout_height="wrap_content"
                 android:text="password"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:layout_marginStart="10dp"/>
 
@@ -231,7 +231,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_phone"
-                app:tint="@color/colorPrimary"
+                app:tint="@color/white"
                 android:contentDescription="TODO" />
 
             <TextView
@@ -239,7 +239,7 @@
                 android:layout_height="wrap_content"
                 android:text="phone number"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:layout_marginStart="10dp"/>
 
