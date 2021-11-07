@@ -3,6 +3,8 @@ package tn.esprit.project.models;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Objects;
+
 @Entity
 public class Vaccine {
 
@@ -53,5 +55,19 @@ public class Vaccine {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vaccine vaccine = (Vaccine) o;
+        return vaccineId == vaccine.vaccineId;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(vaccineId);
     }
 }

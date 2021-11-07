@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteConstraintException;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -26,15 +28,25 @@ public class Affecter_Vaccine_Enfant_Activity extends AppCompatActivity {
     private List<Vaccine> vaccineList;
     private AdapterVaccine vAdapter;
 
+    private long enfantId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affecter_vaccine_enfant);
 
+        //
 
+
+        enfantId=Long.parseLong(getIntent().getStringExtra("enfantId"));
 
         database = MyDataBase.getDataBase(this);
+
+        //initialisation();
+
         vaccineList=database.vaccineDAO().getAllListVaccine();
+
+
 
         RecyclerView recyclerView=findViewById(R.id.listVaccinToChild);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
@@ -103,15 +115,37 @@ public class Affecter_Vaccine_Enfant_Activity extends AppCompatActivity {
         Vaccine vaccine = vaccineList.get(pos);
 
 
-//----->
+        EnfantVaccine enfantVaccine = new EnfantVaccine(vaccine.getVaccineId(),enfantId,new Date());
 
-        EnfantVaccine enfantVaccine = new EnfantVaccine(vaccine.getVaccineId(),1,new Date());
-
-        database.enfantVaccineDAO().add(enfantVaccine);
+        try {
 
 
+            database.enfantVaccineDAO().add(enfantVaccine);
+
+            if (Add_child_vaccine_Activity.enfant != null) {
+                Add_child_vaccine_Activity.enfant.getVaccinToDoList().
+                        remove(vaccine);
+            }
+        }catch (SQLiteConstraintException ex){
+            Toast.makeText(getApplicationContext(), "Vaccined !", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
 
+
+
+    }
+
+    public void initialisation(){
+
+        if(database.vaccineDAO().getAllListVaccine().size()!=0){
+
+            database.vaccineDAO().add(new Vaccine(2,"vaccin1-2M"));
+            database.vaccineDAO().add(new Vaccine(2,"vaccin2-2M"));
+            database.vaccineDAO().add(new Vaccine(3,"vaccin3-3M"));
+            database.vaccineDAO().add(new Vaccine(3,"vaccin4-3M"));
+
+        }
     }
 
 }

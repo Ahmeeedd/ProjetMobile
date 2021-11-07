@@ -39,14 +39,22 @@ public class Add_Vaccine_Activity extends AppCompatActivity {
         editTextNumberMonth = findViewById(R.id.editTextMonthNumber);
 
         btnAdd.setOnClickListener(View -> {
-            Vaccine vaccine = new Vaccine(Integer.parseInt(editTextNumberMonth.getText().toString()), editTextDescription.getText().toString());
-            database.vaccineDAO().add(vaccine);
+
+            if(editTextNumberMonth.getText().toString().isEmpty() && editTextDescription.getText().toString().isEmpty()){
+
+                Toast.makeText(getApplicationContext(), "Fields are empty !", Toast.LENGTH_SHORT).show();
+
+            }else {
+
+                Vaccine vaccine = new Vaccine(Integer.parseInt(editTextNumberMonth.getText().toString()), editTextDescription.getText().toString());
+                database.vaccineDAO().add(vaccine);
 
 
-            Toast.makeText(getApplicationContext(), "Vaccine successfully registered !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Vaccine successfully registered !", Toast.LENGTH_SHORT).show();
 
-            startActivity(new Intent(Add_Vaccine_Activity.this, Affiche_List_Vaccine_Activity.class));
+                startActivity(new Intent(Add_Vaccine_Activity.this, Affiche_List_Vaccine_Activity.class));
 
+            }
 
         });
 

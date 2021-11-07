@@ -2,10 +2,13 @@ package tn.esprit.project.models;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Enfant {
@@ -24,6 +27,9 @@ public class Enfant {
     private Date date_naiss;
     @ColumnInfo
     private int parentId;
+
+    @Ignore
+    private List<Vaccine> vaccinToDoList = new ArrayList<>();
 
 
     public int getParentId() {
@@ -119,5 +125,14 @@ public class Enfant {
 
     public void setDate_naiss(Date date_naiss) {
         this.date_naiss = date_naiss;
+    }
+
+
+    public List<Vaccine> getVaccinToDoList() {
+        return vaccinToDoList;
+    }
+
+    public void setVaccinToDoList(List<Vaccine> vaccinToDoList) {
+        this.vaccinToDoList = vaccinToDoList;
     }
 }

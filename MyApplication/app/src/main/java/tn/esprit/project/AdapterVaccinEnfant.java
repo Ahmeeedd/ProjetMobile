@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ public class AdapterVaccinEnfant  extends RecyclerView.Adapter<
     private Context mContext;
     private List<ModelViewEnfantVaccine> vaccineList;
 
+
     @Override
     public AdapterVaccinEnfant.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View mItemView = LayoutInflater.from(mContext).inflate(R.layout.items_vaccine, parent, false);
@@ -36,6 +38,7 @@ public class AdapterVaccinEnfant  extends RecyclerView.Adapter<
         ModelViewEnfantVaccine singleVaccine = vaccineList.get(position);
         holder.txtDescription.setText(singleVaccine.getDescription());
         holder.textViewDateC.setText(formatDate(singleVaccine.getDateCreation()));
+        holder.imageViewV.setImageResource(R.drawable.iconeprotger);
     }
 
     @Override
@@ -46,11 +49,13 @@ public class AdapterVaccinEnfant  extends RecyclerView.Adapter<
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView txtDescription;
         private TextView textViewDateC;
+        private ImageView imageViewV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewDateC = itemView.findViewById(R.id.textViewDateC);
             txtDescription = itemView.findViewById(R.id.textViewDescription);
+            imageViewV=itemView.findViewById(R.id.imageViewItemVaccinChild);
         }
     }
 

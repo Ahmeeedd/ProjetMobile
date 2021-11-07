@@ -32,6 +32,8 @@ import tn.esprit.project.database.MyDataBase;
 import tn.esprit.project.models.Enfant;
 import tn.esprit.project.models.EnfantVaccine;
 import tn.esprit.project.models.ModelViewEnfantVaccine;
+import tn.esprit.project.models.User;
+import tn.esprit.project.models.Vaccine;
 
 public class Add_child_vaccine_Activity extends AppCompatActivity {
 
@@ -45,30 +47,76 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
 
     private TextView textViewAge;
 
-    private  TextView dateNai;
+    private TextView dateNai;
 
-    List<ModelViewEnfantVaccine> list;
+    private TextView textViewHistorique;
+    private TextView texViewToDo;
+
+    private List<ModelViewEnfantVaccine> list;
+    public static Enfant enfant;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_child_vaccine);
 
-
-        System.out.println(Integer.parseInt(getIntent().getStringExtra("enfantId")));
-
+        texViewToDo =findViewById(R.id.textViewD);
 
         textViewAge = findViewById(R.id.textViewAge);
+
+        textViewHistorique = findViewById(R.id.textViewHistorique);
 
         dateNai = findViewById(R.id.textViewDateNaissance);
 
         database = MyDataBase.getDataBase(this);
+
         list = new ArrayList<>();
 
-        // --->
+        nomPrenomChild = findViewById(R.id.textViewNomPrenom);
 
 
-        try {
+        if (enfant == null) {
+
+            enfant = database.enfantDAO().getById((Long.parseLong(getIntent().getStringExtra("enfantId"))));
+
+        }
+
+        if (enfant != null) {
+
+
+
+                List<EnfantVaccine> enfantVaccines = database.enfantVaccineDAO().getByEnfant(enfant.getEnfantId());
+
+                verif(enfantVaccines);
+
+                nomPrenomChild.setText("Name: " + enfant.getPrenom());
+
+                textViewAge.setText("Age:" + String.valueOf(calculAge(enfant.getDate_naiss())) + " Month");
+
+                dateNai.setText("date of birth:" + formatDate(enfant.getDate_naiss()));
+
+
+               // textViewHistorique.setText("Vaccin History (" + enfantVaccines.size() + ")");
+
+                //------->
+                for (EnfantVaccine enfantVaccine : enfantVaccines
+                ) {
+                    list.add(new ModelViewEnfantVaccine(database.vaccineDAO()
+                            .findVaccine(enfantVaccine.getVaccineId()).getDescription()
+                            , enfantVaccine.getDateVaccine(), enfantVaccine.getEnfantId()
+                            , enfantVaccine.getVaccineId()));
+
+                }
+
+
+
+
+
+        }
+
+
+        /*try {
 
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -83,50 +131,7 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
 
         } catch (ParseException e) { // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-
-
-        //------->
-        for (EnfantVaccine enfantVaccine : database.enfantVaccineDAO().getByEnfant(1)
-        ) {
-
-
-            list.add(new ModelViewEnfantVaccine(database.vaccineDAO()
-                    .findVaccine(enfantVaccine.getVaccineId()).getDescription()
-                    , enfantVaccine.getDateVaccine(), enfantVaccine.getEnfantId()
-                    , enfantVaccine.getVaccineId()));
-
-        }
-
-       /* List<ModelViewEnfantVaccine> list = new ArrayList<>();
-        list.add(new ModelViewEnfantVaccine("desc1",new Date()));
-        list.add(new ModelViewEnfantVaccine("desc2",new Date()));
-        list.add(new ModelViewEnfantVaccine("desc3",new Date()));
-        list.add(new ModelViewEnfantVaccine("desc4",new Date()));
-        list.add(new ModelViewEnfantVaccine("desc5",new Date()));*/
-
-
-        //System.out.println("--->"+database.enfantDAO().getEnfantWithVaccinList().size());
-
-
-        nomPrenomChild = findViewById(R.id.textViewNomPrenom);
-
-        nomPrenomChild.setText("oussema ");
-
-
-        //intialisation
-
-        Enfant enfant = database.enfantDAO().getById(1);
-
-        if(enfant!=null){
-
-            textViewAge.setText("Age:" + String.valueOf(calculAge(enfant.getDate_naiss()))+" Month");
-
-            dateNai.setText("date of birth:"+formatDate(enfant.getDate_naiss()));
-
-        }
-
-
+        }*/
 
 
         RecyclerView recyclerView = findViewById(R.id.listVaccinToChild);
@@ -160,10 +165,17 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(Add_child_vaccine_Activity.this, Affecter_Vaccine_Enfant_Activity.class));
+                Intent i = new Intent(Add_child_vaccine_Activity.this, Affecter_Vaccine_Enfant_Activity.class);
+
+                i.putExtra("enfantId", String.valueOf(enfant.getEnfantId()));
+
+                startActivity(i);
 
             }
         });
+
+
+
 
 
     }
@@ -189,6 +201,11 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
 
                         adapterVaccinEnfant.notifyItemRemoved(position);
 
+                        //update
+                        List<EnfantVaccine> enfantVaccines = database.enfantVaccineDAO().getByEnfant(enfant.getEnfantId());
+
+                        verif(enfantVaccines);
+
 
                     }
                 } else {
@@ -198,9 +215,6 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
         });
         builder.show();
     }
-
-
-
 
 
     public long calculAge(Date d) {
@@ -218,10 +232,9 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
             Date secondDate = sdf.parse(dSystem);
 
 
-
             long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
             long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-             return  diff /30 ;
+            return diff / 30;
 
         } catch (ParseException e) { // TODO Auto-generated catch block
             return 0;
@@ -241,5 +254,61 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
         }
     }
 
+    public void verif(List<EnfantVaccine> vaccineList) {
+
+
+        int nb = 0;
+
+        for (Vaccine vaccine : database.vaccineDAO().getAllListVaccine()
+        ) {
+
+            if (vaccine.getMonthNumber() <= calculAge(enfant.getDate_naiss())
+                    && verifContains(vaccine, vaccineList) == false) {
+
+                nb++;
+                enfant.getVaccinToDoList().add(vaccine);
+            }
+
+        }
+
+        if (nb != 0) {
+
+
+            texViewToDo.setText("Vaccin to do :"+nb);
+
+            CharSequence colors[] = new CharSequence[]{"OK"};
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("You have " + nb + " Vaccin to do !");
+            builder.setItems(colors, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    builder.setCancelable(true);
+                }
+            });
+            builder.show();
+
+
+        }
+
+
+    }
+
+    public boolean verifContains(Vaccine v, List<EnfantVaccine> vaccineList) {
+
+
+        for (EnfantVaccine enfantVaccine : vaccineList
+        ) {
+
+            if (enfantVaccine.getVaccineId() == v.getVaccineId()) {
+                return true;
+            }
+
+        }
+
+        return false;
+    }
 
 }
+

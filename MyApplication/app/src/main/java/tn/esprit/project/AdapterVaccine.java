@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,7 +29,18 @@ public class AdapterVaccine extends RecyclerView.Adapter<
     public void onBindViewHolder(@NonNull AdapterVaccine.ViewHolder holder, int position) {
         Vaccine singleVaccine = vaccineList.get(position);
         holder.txtDescription.setText(singleVaccine.getDescription());
-        holder.txtNumberMonth.setText(String.valueOf(singleVaccine.getMonthNumber()));
+        holder.txtNumberMonth.setText(String.valueOf(singleVaccine.getMonthNumber())+" Month");
+
+       /* if(Add_child_vaccine_Activity.enfant!=null) {
+
+            if (Add_child_vaccine_Activity.enfant.getVaccinToDoList().contains(singleVaccine)) {
+
+                holder.imageVaccin.setImageResource(R.drawable.iconnonproteger);
+                holder.txtDescription.setText(singleVaccine.getDescription()+" late !");
+            }
+        }*/
+
+
     }
 
     @Override
@@ -39,11 +51,13 @@ public class AdapterVaccine extends RecyclerView.Adapter<
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView txtDescription;
         private TextView txtNumberMonth;
+        private ImageView imageVaccin;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtNumberMonth = itemView.findViewById(R.id.textViewDateC);
             txtDescription = itemView.findViewById(R.id.textViewDescription);
+            imageVaccin=itemView.findViewById(R.id.imageViewItemVaccinChild);
         }
     }
 

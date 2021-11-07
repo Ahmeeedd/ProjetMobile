@@ -115,6 +115,7 @@ public class ManageEnfantsActivity extends AppCompatActivity {
 
     public void ShowAddVaccin(int position){
 
+        Add_child_vaccine_Activity.enfant=null;
 
         Intent i = new Intent(ManageEnfantsActivity.this, Add_child_vaccine_Activity.class);
 
