@@ -23,5 +23,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.logout:
+                Intent myintent=new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(myintent);
+                Toast.makeText(this, "logout successfully", Toast.LENGTH_SHORT).show();
+                return true;
 
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
