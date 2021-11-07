@@ -55,6 +55,9 @@ public class Add_child_vaccine_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_add_child_vaccine);
 
 
+        System.out.println(Integer.parseInt(getIntent().getStringExtra("enfantId")));
+
+
         textViewAge = findViewById(R.id.textViewAge);
 
         dateNai = findViewById(R.id.textViewDateNaissance);

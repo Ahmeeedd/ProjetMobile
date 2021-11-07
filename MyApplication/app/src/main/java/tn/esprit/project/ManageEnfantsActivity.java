@@ -3,6 +3,8 @@ package tn.esprit.project;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import android.content.Intent;
@@ -52,6 +54,24 @@ public class ManageEnfantsActivity extends AppCompatActivity {
 
         enfantRecyclerview.setLayoutManager(new LinearLayoutManager(ManageEnfantsActivity.this));
 
+
+        enfantRecyclerview.addOnItemTouchListener(new RecyclerTouchListener(this,
+                enfantRecyclerview, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, final int position) {
+
+
+
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+                showActionsDialog(position);
+
+            }
+        }));
+
     }
 
     @Override
@@ -67,5 +87,40 @@ public class ManageEnfantsActivity extends AppCompatActivity {
         MyDataBase db = MyDataBase.getDataBase(getApplicationContext());
 
         return (ArrayList<Enfant>) db.enfantDAO().getAllEnfantbyUser(id);
+    }
+
+    private void showActionsDialog(final int position) {
+        CharSequence colors[] = new CharSequence[]{"Add","Cancel"};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Do you wont add a vaccin to this child ?");
+        builder.setItems(colors, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+
+                if (which == 0) {
+
+                    ShowAddVaccin(position);
+
+                } else {
+                    builder.setCancelable(true);
+                }
+
+
+            }
+        });
+        builder.show();
+    }
+
+    public void ShowAddVaccin(int position){
+
+
+        Intent i = new Intent(ManageEnfantsActivity.this, Add_child_vaccine_Activity.class);
+
+        i.putExtra("enfantId",String.valueOf(this.listenfants.get(position).getEnfantId()));
+
+        startActivity(i);
+
     }
 }

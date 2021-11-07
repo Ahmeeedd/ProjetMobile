@@ -7,9 +7,11 @@
     android:id="@+id/mainLayout">
 
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="409dp"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:clickable="true">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
