@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/mainLayout">
+    android:id="@+id/layoutmedecin">
 
 
 
@@ -22,56 +22,72 @@
             >
 
             <ImageView
-                android:id="@+id/imageViewItemVaccinChild"
-                android:layout_width="105dp"
-                android:layout_height="105dp"
+                android:id="@+id/imagemedecin"
+                android:layout_width="125dp"
+                android:layout_height="157dp"
+                android:contentDescription="TODO"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.009"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.242"
-                app:srcCompat="@drawable/bebe"
-                android:contentDescription="TODO" />
+                app:srcCompat="@drawable/doctor" />
 
             <TextView
                 android:id="@+id/txt_name"
                 android:layout_width="221dp"
                 android:layout_height="26dp"
-                android:layout_marginStart="36dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:text="@string/name_child"
+                android:text="Name meddecin"
                 android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/imageViewItemVaccinChild"
-                app:layout_constraintTop_toTopOf="@+id/imageViewItemVaccinChild" />
+                app:layout_constraintStart_toEndOf="@+id/imagemedecin"
+                app:layout_constraintTop_toTopOf="@+id/imagemedecin" />
 
             <TextView
-                android:id="@+id/txt_weight"
+                android:id="@+id/txt_adresse"
                 android:layout_width="220dp"
                 android:layout_height="25dp"
                 android:layout_marginTop="12dp"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:text="weight"
+                android:text="Adresse"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.608"
-                app:layout_constraintStart_toEndOf="@+id/imageViewItemVaccinChild"
+                app:layout_constraintStart_toEndOf="@+id/imagemedecin"
                 app:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
+
             <TextView
-                android:id="@+id/txtheight"
+                android:id="@+id/txttelephone"
 
                 android:layout_width="219dp"
                 android:layout_height="24dp"
-                android:layout_marginStart="36dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:text="height"
-                app:layout_constraintStart_toEndOf="@+id/imageViewItemVaccinChild"
-                app:layout_constraintTop_toBottomOf="@+id/txt_weight" />
+                android:text="Telephone"
+                app:layout_constraintStart_toEndOf="@+id/imagemedecin"
+                app:layout_constraintTop_toBottomOf="@+id/txt_adresse" />
+
+
+            <TextView
+                android:id="@+id/txtemail"
+
+                android:layout_width="219dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="20dp"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:text="Email"
+                app:layout_constraintStart_toEndOf="@+id/imagemedecin"
+                app:layout_constraintTop_toBottomOf="@+id/txttelephone" />
 
             <View
                 android:layout_width="match_parent"
@@ -81,7 +97,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.625"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtheight" />
+                app:layout_constraintTop_toBottomOf="@+id/txtemail" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

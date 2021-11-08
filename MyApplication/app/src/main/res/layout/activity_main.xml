@@ -133,6 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:gravity="center"
+                android:id="@+id/idfichemedcin"
                 android:orientation="vertical">
 
                 <ImageView

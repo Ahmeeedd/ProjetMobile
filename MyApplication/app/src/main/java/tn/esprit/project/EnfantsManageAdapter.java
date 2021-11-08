@@ -5,11 +5,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,7 +61,7 @@ public class EnfantsManageAdapter extends RecyclerView.Adapter<EnfantsManageAdap
         holder.txtname.setText(String.valueOf(enfantslist.get(position).getPrenom()));
         holder.txtheight.setText(String.valueOf(enfantslist.get(position).getTaille()));
         holder.txtweight.setText(String.valueOf(enfantslist.get(position).getPoids()));
-
+        holder.imageenfant.setImageResource(R.drawable.bebe);
 
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
 
@@ -74,18 +76,6 @@ public class EnfantsManageAdapter extends RecyclerView.Adapter<EnfantsManageAdap
                 result.putString("Taille",String.valueOf(enfantslist.get(position).getTaille()));
                 result.putString("Date Naissance",String.valueOf(enfantslist.get(position).getDate_naiss()));
 
-
-              //  FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
-
-                //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-             //   DetailsRideFragment detailsridefragment = new DetailsRideFragment();
-               // detailsridefragment.setArguments(result);
-
-                //fragmentTransaction.replace(R.id.idframentrides,detailsridefragment);
-
-//                fragmentTransaction.commit();
-                //  Toast.makeText(context, "item clicked" + rideslist.get(position).getRide_id(), Toast.LENGTH_LONG).show();
 
             }
         });
@@ -103,6 +93,7 @@ public class EnfantsManageAdapter extends RecyclerView.Adapter<EnfantsManageAdap
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtname, txtheight, txtweight;
+        ImageView imageenfant;
         LinearLayout mainLayout;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -112,7 +103,9 @@ public class EnfantsManageAdapter extends RecyclerView.Adapter<EnfantsManageAdap
             txtname = itemView.findViewById(R.id.txt_name);
             txtheight = itemView.findViewById(R.id.txtheight);
             txtweight = itemView.findViewById(R.id.txt_weight);
+            imageenfant = itemView.findViewById(R.id.imageViewItemVaccinChild);
             mainLayout = itemView.findViewById(R.id.mainLayout);
+
 
             // mainLayout.setOnClickListener();
 

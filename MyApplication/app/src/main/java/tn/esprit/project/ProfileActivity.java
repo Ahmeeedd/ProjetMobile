@@ -53,6 +53,7 @@ public class ProfileActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_profile);
+    Button cancel=(Button) findViewById(R.id.btCancel);
 
         btnedit = findViewById(R.id.idtnedit);
         profileiv =findViewById(R.id.avatarimageid);
@@ -71,7 +72,13 @@ public class ProfileActivity extends AppCompatActivity {
         name.setText(userprofile.getFirstname()+" "+userprofile.getLastname());
 
         displayProfileImage();
-
+    cancel.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent myintent=new Intent(ProfileActivity.this,Welcome.class);
+            startActivity(myintent);
+        }
+    });
         profileiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

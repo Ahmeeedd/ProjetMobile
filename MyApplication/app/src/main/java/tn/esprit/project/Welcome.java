@@ -6,13 +6,23 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.w3c.dom.Text;
+
+import java.util.List;
+
+
 public class Welcome extends AppCompatActivity {
+
+    public static String usernameuser;
+    TextView txtwelcome;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +32,23 @@ public class Welcome extends AppCompatActivity {
         Intent myintent2=new Intent(this,ManageEnfantsActivity.class);
         Bundle bdl =getIntent().getExtras();
         FloatingActionButton faList=(FloatingActionButton) findViewById(R.id.floatingActionlist);
+
+
+
+        txtwelcome = findViewById(R.id.idwelcome);
+
+
+        if (usernameuser.isEmpty())
+        {
+            txtwelcome.setText("Welcome ");
+        }
+        else
+        {
+            txtwelcome.setText("Welcome  " +usernameuser);
+        }
+
+
+
         //  tv.setText(bdl.getString("var1"));
         FloatingActionButton fab=(FloatingActionButton) findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {

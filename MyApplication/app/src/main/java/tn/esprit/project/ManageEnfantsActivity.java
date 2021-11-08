@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,6 +46,7 @@ public class ManageEnfantsActivity extends AppCompatActivity {
         txtnom = findViewById(R.id.txt_name);
         txtpoid = findViewById(R.id.txt_weight);
         txttaille = findViewById(R.id.txtheight);
+        Button cancel=(Button) findViewById(R.id.btCancel);
 
         listenfants = getEnfant((int)userconnected.getUserId());
 
@@ -53,6 +55,7 @@ public class ManageEnfantsActivity extends AppCompatActivity {
         enfantRecyclerview.setAdapter(enfantadapter);
 
         enfantRecyclerview.setLayoutManager(new LinearLayoutManager(ManageEnfantsActivity.this));
+
 
 
         enfantRecyclerview.addOnItemTouchListener(new RecyclerTouchListener(this,

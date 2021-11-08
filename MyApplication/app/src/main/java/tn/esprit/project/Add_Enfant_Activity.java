@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +41,7 @@ public class Add_Enfant_Activity extends AppCompatActivity {
         // Inflate the layout for this fragment
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_enfant);
+        Button cancel=(Button) findViewById(R.id.btCancel);
 
         Epoids =  findViewById(R.id.Epoids);
         Etaille= findViewById(R.id.Etaille);
@@ -48,7 +50,13 @@ public class Add_Enfant_Activity extends AppCompatActivity {
         submitbtn =  findViewById(R.id.idaddnew);
         Edate_naiss= findViewById(R.id.date_naiss);
 
-
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myintent=new Intent(Add_Enfant_Activity.this,Welcome.class);
+                startActivity(myintent);
+            }
+        });
         submitbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +71,7 @@ public class Add_Enfant_Activity extends AppCompatActivity {
                 try {
                     Date date = formatter.parse(Edate_naissstring);
 
-                    if (Epoidsstring == 0.0 || Etaillestring == 0 || Eprenomstring.isEmpty()
+                    if (Epoidsstring == 0 || Etaillestring == 0 || Eprenomstring.isEmpty()
                             || Eagestring == 0 || Edate_naissstring.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Some fields are empty !", Toast.LENGTH_SHORT).show();
                     } else {
